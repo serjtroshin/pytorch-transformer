@@ -7,7 +7,7 @@ https://www.github.com/kyubyong/transformer
 '''
 from __future__ import print_function
 from hyperparams import Hyperparams as hp
-import tensorflow as tf
+#  import tensorflow as tf
 import numpy as np
 import codecs
 import os

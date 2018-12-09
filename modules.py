@@ -41,7 +41,7 @@ class embedding(nn.Module):
             self.padding_idx = 0
         else:
             self.padding_idx = -1
-        outputs = self._backend.Embedding.apply(
+        outputs = F.embedding(
             inputs, self.lookup_table, self.padding_idx, None, 2, False, False)  # copied from torch.nn.modules.sparse.py
 
         if self.scale:
@@ -107,9 +107,8 @@ class positional_encoding(nn.Module):
             padding_idx = 0
         else:
             padding_idx = -1
-
-        outputs = self._backend.Embedding.apply(
-            position_ind, lookup_table, padding_idx, None, 2, False, False)   # copied from torch.nn.modules.sparse.py
+        outputs = F.embedding(
+            position_ind, lookup_table, padding_idx, None, 2, False, False)
 
         if self.scale:
             outputs = outputs * self.num_units ** 0.5
